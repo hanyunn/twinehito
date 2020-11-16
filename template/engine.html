@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Final Fantasy VII - The Text Adventure</title>
+  <meta charset="utf-8">
+</head>
+<body>
+  <main>
+    <h1>Final Fantasy VII - The Text Adventure</h1>
+    <section id="play"><button type="button" onclick="doIt('toc')">Let's play</button></section>
+  </main>
+  <script>
+  var oldHistory = [];
+  var currentPassage = '';
+
+  console.log(oldHistory);
+
+  function clear(){
+    console.log('clear()');
+
+    document.getElementById('play').innerHTML = '';
+  }
+
+  function echo(str){
+    //console.log('echo: ' + str);
+
+    document.getElementById('play').innerHTML += '<p>' + str + '</p>';
+  }
+
+  // return the number if times you visited the passage.
+  function getViews(nameOfPassage){
+    // check if not used. if not used set it to current passage.
+    if(!nameOfPassage){
+      nameOfPassage = currentPassage;
+    }
+
+    console.log('getViews(): ' + nameOfPassage);
+
+    if(oldHistory.hasOwnProperty(nameOfPassage) == false){
+      oldHistory[nameOfPassage] = 0;
+    }
+
+    return oldHistory[nameOfPassage];
+  }
+
+  // helper function for getViews(). returns true if it's your first time visiting the passage
+  function isFirstTime(){
+    if(getViews(currentPassage) > 0){
+      return false;
+    }else{
+      return true;
+    }
+  }
+
+  // add input to the history log.
+  function logHistory(nameOfPassage){
+    console.log('logHistory(): ' + nameOfPassage);
+
+    if(oldHistory.hasOwnProperty(nameOfPassage)){
+      oldHistory[nameOfPassage] += 1;
+    }else{
+      oldHistory[nameOfPassage] = 1;
+    }
+
+    console.log(oldHistory);
+  }
+
+  function doIt(nameOfPassage){
+    console.log('doIt: ' + nameOfPassage);
+    currentPassage = nameOfPassage;
+
+    clear();
+
+    switch (nameOfPassage) {
+      <contents>
+      default:
+        console.log('error was here :(.')
+    }
+
+    logHistory(nameOfPassage);
+  }
+  </script>
+</body>
+</html>
